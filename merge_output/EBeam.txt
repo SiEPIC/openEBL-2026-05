@@ -1,0 +1,287 @@
+SiEPIC-Tools 0.5.31, layout merge, running KLayout 0.30.8 
+Date: 2026-05-01, 09:57:16 local time
+
+Loading: EBL_Framework_1cm_PCM_static.oas, dated 20260201_2051
+  - course name: openEBL
+
+Loading: UBC_static.oas, dated 20260201_2051
+  - course name: openEBL
+
+Loading: EBeam_Aexl1.gds, dated 20260430_2200
+  - course name: edXphot1x
+  - top cell: EBeam_Aexl1_v1
+  - loading layer: 998/0
+  - loading layer: 10/0
+  - loading layer: 1/0
+  - loading layer: 1/10
+  - loading layer: 68/0
+  - deleting layer: 1/99
+  - loading layer: 81/0
+  - loading layer: 99/0
+  - measurement label: opt_in_TE_1550_device_Aexl1_MZI41
+  - measurement label: opt_in_TE_1550_device_Aexl1_MZI51
+  - measurement label: opt_in_TE_1550_device_Aexl1_MZI12
+  - measurement label: opt_in_TE_1550_device_Aexl1_MZI12B
+  - measurement label: opt_in_TE_1550_device_Aexl1_MZI52
+  - measurement label: opt_in_TE_1550_device_Aexl1_MZI11
+  - measurement label: opt_in_TE_1550_device_Aexl1_MZI11B
+  - measurement label: opt_in_TE_1550_device_Aexl1_Cross11
+  - measurement label: opt_in_TE_1550_device_Aexl1_MZI01
+  - measurement label: opt_in_TE_1550_device_Aexl1_Ring12
+  - measurement label: opt_in_TE_1550_device_Aexl1_Exp11
+  - measurement label: opt_in_TE_1550_device_Aexl1_Exp11B
+  - measurement label: opt_in_TE_1550_device_Aexl1_MZI22
+  - measurement label: opt_in_TE_1550_device_Aexl1_MZI21
+  - measurement label: opt_in_TE_1550_device_Aexl1_MZI02
+  - bounding box: (-144193,-238619;460807,171381)
+  - Placed at position: 0, 426000
+
+Loading: EBeam_LukasChrostowski_BraggMMcavity.oas, dated 20260201_2055
+  - course name: edXphot1x
+  - top cell: EBeam_LukasChrostowski_BraggMMcavity
+  - loading layer: 998/0
+  - loading layer: 68/0
+  - loading layer: 1/10
+  - loading layer: 1/0
+  - deleting layer: 1/99
+  - loading layer: 10/0
+  - loading layer: 81/0
+  - loading layer: 99/0
+  - measurement label: opt_in_TE_1310_device_LukasChrostowski_BraggMMcavity70
+  - measurement label: opt_in_TE_1310_device_LukasChrostowski_BraggMMcavity50
+  - measurement label: opt_in_TE_1310_device_LukasChrostowski_BraggMMcavity40
+  - measurement label: opt_in_TE_1310_device_LukasChrostowski_BraggMMcavity60
+  - bounding box: (0,0;605000,410000)
+  - Placed at position: 0, 844000
+
+Loading: EBeam_LukasChrostowski_BraggMMcavityB.oas, dated 20260201_2058
+  - course name: edXphot1x
+  - top cell: EBeam_LukasChrostowski_BraggMMcavityB
+  - loading layer: 998/0
+  - loading layer: 68/0
+  - loading layer: 1/10
+  - loading layer: 1/0
+  - deleting layer: 1/99
+  - loading layer: 10/0
+  - loading layer: 81/0
+  - loading layer: 99/0
+  - measurement label: opt_in_TE_1310_device_LukasChrostowski_BraggMMcavityB9
+  - measurement label: opt_in_TE_1310_device_LukasChrostowski_BraggMMcavityB7
+  - measurement label: opt_in_TE_1310_device_LukasChrostowski_BraggMMcavityB6
+  - measurement label: opt_in_TE_1310_device_LukasChrostowski_BraggMMcavityB8
+  - bounding box: (0,0;605000,410000)
+  - Placed at position: 0, 1262000
+
+Loading: EBeam_LukasChrostowski_BraggMMcavityC.oas, dated 20260201_2058
+  - course name: edXphot1x
+  - top cell: EBeam_LukasChrostowski_BraggMMcavityC
+  - loading layer: 998/0
+  - loading layer: 68/0
+  - loading layer: 1/10
+  - loading layer: 1/0
+  - deleting layer: 1/99
+  - loading layer: 10/0
+  - loading layer: 81/0
+  - loading layer: 99/0
+  - measurement label: opt_in_TE_1550_device_LukasChrostowski_BraggMMcavityC9
+  - measurement label: opt_in_TE_1550_device_LukasChrostowski_BraggMMcavityC7
+  - measurement label: opt_in_TE_1550_device_LukasChrostowski_BraggMMcavityC6
+  - measurement label: opt_in_TE_1550_device_LukasChrostowski_BraggMMcavityC8
+  - bounding box: (0,0;605000,410000)
+  - Placed at position: 0, 1680000
+
+Loading: EBeam_LukasChrostowski_MZI.oas, dated 20260201_2058
+  - course name: edXphot1x
+  - top cell: EBeam_LukasChrostowski_MZI
+  - loading layer: 998/0
+  - loading layer: 68/0
+  - loading layer: 1/10
+  - loading layer: 1/0
+  - deleting layer: 1/99
+  - loading layer: 10/0
+  - loading layer: 81/0
+  - loading layer: 99/0
+  - measurement label: opt_in_TE_1550_device_LukasChrostowski_MZI3
+  - measurement label: opt_in_TE_1550_device_LukasChrostowski_MZI2
+  - measurement label: opt_in_TE_1550_device_LukasChrostowski_MZI1
+  - bounding box: (0,0;605000,410000)
+  - Placed at position: 0, 2098000
+
+Loading: EBeam_LukasChrostowski_rings.oas, dated 20260201_2058
+  - course name: edXphot1x
+  - top cell: EBeam_LukasChrostowski_rings
+  - loading layer: 998/0
+  - loading layer: 1/0
+  - loading layer: 68/0
+  - loading layer: 1/10
+  - deleting layer: 1/99
+  - loading layer: 10/0
+  - loading layer: 81/0
+  - loading layer: 99/0
+  - measurement label: opt_in_TE_1550_device_LukasChrostowski_RingDoubleTEr10g110
+  - measurement label: opt_in_TE_1550_device_LukasChrostowski_RingDoubleTEr10g90
+  - measurement label: opt_in_TE_1550_device_LukasChrostowski_RingDoubleTEr10g100
+  - measurement label: opt_in_TE_1550_device_LukasChrostowski_RingDoubleTEr10g80
+  - measurement label: opt_in_TE_1550_device_LukasChrostowski_RingDoubleTEr5g90
+  - measurement label: opt_in_TE_1550_device_LukasChrostowski_RingDoubleTEr5g80
+  - measurement label: opt_in_TE_1550_device_LukasChrostowski_RingDoubleTEr5g70
+  - measurement label: opt_in_TE_1550_device_LukasChrostowski_RingDoubleTEr3g70
+  - bounding box: (0,0;605000,410000)
+  - Placed at position: 0, 2516000
+
+Loading: EBeam_MateoBCalles.gds, dated 20260501_0955
+  - course name: edXphot1x
+  - top cell: EBeam_Example_MZI
+  - loading layer: 998/0
+  - loading layer: 68/0
+  - loading layer: 1/10
+  - loading layer: 1/0
+  - deleting layer: 1/99
+  - loading layer: 10/0
+  - loading layer: 81/0
+  - loading layer: 99/0
+  - measurement label: opt_in_TE_1550_device_Example_MZI2
+  - measurement label: opt_in_TE_1550_device_Example_MZI3
+  - measurement label: opt_in_TE_1550_device_Example_MZI1
+  - bounding box: (0,0;605000,410000)
+  - Placed at position: 0, 2934000
+
+Loading: EBeam_hnguyen_psiq.gds, dated 20260427_2048
+  - course name: edXphot1x
+  - top cell: TOP
+  - loading layer: 998/0
+  - loading layer: 1/0
+  - loading layer: 1/10
+  - loading layer: 68/0
+  - deleting layer: 1/99
+  - loading layer: 10/0
+  - loading layer: 81/0
+  - loading layer: 99/0
+  - measurement label: opt_in_TE_1550_device_MZI_70um
+  - measurement label: opt_in_TE_1550_device_MZI_80um
+  - measurement label: opt_in_TE_1550_device_MZI_40um
+  - measurement label: opt_in_TE_1550_device_MZI_50um
+  - measurement label: opt_in_TE_1550_device_MZI_60um
+  - measurement label: opt_in_TE_1550_device_MZI_200um
+  - measurement label: opt_in_TE_1550_device_MZI_110um
+  - measurement label: opt_in_TE_1550_device_MZI_100um
+  - measurement label: opt_in_TE_1550_device_MZI_160um
+  - measurement label: opt_in_TE_1550_device_MZI_100um_control
+  - measurement label: opt_in_TE_1550_device_MZI_30um
+  - bounding box: (-43040,37970;561960,447970)
+  - Placed at position: 0, 3352000
+
+Loading: openEBL_Bredian_DC_Matrix_g200_M[1;0][0;1]_Vin01.gds, dated 20260501_0804
+  - course name: openEBL
+  - top cell: DC_Matrix
+  - loading layer: 998/0
+  - loading layer: 10/0
+  - loading layer: 1/0
+  - loading layer: 1/10
+  - loading layer: 68/0
+  - loading layer: 81/0
+  - deleting layer: 1/99
+  - loading layer: 99/0
+  - measurement label: opt_in_TE_1550_openEBL_Bredian_DCMatrix_V01
+  - bounding box: (-104000,-113140;236430,208140)
+  - Placed at position: 0, 3770000
+
+Loading: openEBL_Bredian_DC_Matrix_g200_M[1;0][0;1]_Vin10.gds, dated 20260501_0804
+  - course name: openEBL
+  - top cell: DC_Matrix
+  - loading layer: 998/0
+  - loading layer: 10/0
+  - loading layer: 1/0
+  - loading layer: 1/10
+  - loading layer: 68/0
+  - deleting layer: 1/99
+  - loading layer: 81/0
+  - loading layer: 99/0
+  - measurement label: opt_in_TE_1550_openEBL_Bredian_DCMatrix_V10
+  - bounding box: (-108880,-104950;224330,219080)
+  - Placed at position: 0, 4099280
+
+Loading: openEBL_Bredian_REMZI_r18.gds, dated 20260501_0804
+  - course name: openEBL
+  - top cell: REMZI
+  - loading layer: 998/0
+  - loading layer: 10/0
+  - loading layer: 1/0
+  - loading layer: 1/10
+  - loading layer: 68/0
+  - deleting layer: 1/99
+  - loading layer: 81/0
+  - loading layer: 99/0
+  - measurement label: opt_in_TE_1550_REMZI_g100r18
+  - measurement label: opt_in_TE_1550_REMZI_g200r18
+  - measurement label: opt_in_TE_1550_REMZI_g60r18
+  - bounding box: (192430,437920;634280,739650)
+  - Placed at position: 0, 4431310
+
+Loading: openEBL_Bredian_REMZI_r5.gds, dated 20260501_0804
+  - course name: openEBL
+  - top cell: REMZI
+  - loading layer: 998/0
+  - loading layer: 10/0
+  - loading layer: 1/0
+  - loading layer: 1/10
+  - loading layer: 68/0
+  - loading layer: 81/0
+  - deleting layer: 1/99
+  - loading layer: 99/0
+  - measurement label: opt_in_TE_1550_REMZI_g60r5
+  - measurement label: opt_in_TE_1550_REMZI_g200r5
+  - measurement label: opt_in_TE_1550_REMZI_g100r5
+  - bounding box: (195670,439430;584810,756430)
+  - Placed at position: 0, 4741040
+
+Loading: openEBL_Bredian_Ring_Filter_R_24_25_26.gds, dated 20260501_0804
+  - course name: openEBL
+  - top cell: Ring_Filter
+  - loading layer: 998/0
+  - loading layer: 10/0
+  - loading layer: 1/0
+  - loading layer: 1/10
+  - loading layer: 68/0
+  - deleting layer: 1/99
+  - loading layer: 81/0
+  - loading layer: 99/0
+  - measurement label: opt_in_TE_1550_Ring_Filter_g75
+  - measurement label: opt_in_TE_1550_Ring_Filter_g100
+  - bounding box: (-301550,-124030;121760,323170)
+  - WARNING: Cell was clipped to maximum size of 605000 X 410000
+  - clipped bounding box: (-301550,-124030;121760,285970)
+  - Placed at position: 0, 5066040
+
+Loading: openEBL_Bredian_Ring_Matrix.gds, dated 20260501_0804
+  - course name: openEBL
+  - top cell: Ring_Matrix
+  - loading layer: 998/0
+  - loading layer: 10/0
+  - loading layer: 1/0
+  - loading layer: 1/10
+  - loading layer: 68/0
+  - loading layer: 81/0
+  - deleting layer: 1/99
+  - loading layer: 99/0
+  - measurement label: opt_in_TE_1550_openEBL_Bredian_Ring_Matrix
+  - bounding box: (-30590,24600;183850,314510)
+  - Placed at position: 0, 5484040
+
+Loading: openEBL_ContradirectionalCoupler.oas, dated 20260201_2058
+  - course name: openEBL
+  - top cell: SiEPIC_EBeam_contraDC_circuits
+  - loading layer: 998/0
+  - loading layer: 10/0
+  - loading layer: 1/0
+  - loading layer: 68/0
+  - loading layer: 1/10
+  - deleting layer: 1/99
+  - loading layer: 81/0
+  - loading layer: 99/0
+  - measurement label: opt_in_TE_1550_device_contraDC1000N316period100g560wa440wb48dwa24dwb0sine2.7a
+  - bounding box: (0,0;605000,410000)
+  - Placed at position: 0, 5781950
+
+
+Execution time: 2 seconds
