@@ -164,5 +164,5 @@ jobs:
           echo "done: git commit"
           git push
           echo "done: git push"
-        #if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request'
             

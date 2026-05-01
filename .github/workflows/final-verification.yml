@@ -3,8 +3,6 @@ name: Final Verification Check
 on:
   pull_request:
     types: [opened, synchronize, reopened]
-  push:
-    types: [opened, synchronize, reopened]
 
 permissions:
   contents: read
@@ -27,6 +25,8 @@ jobs:
       - name: Checkout repo
         if: github.head_ref != 'automation/aggregation-output'
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install GitHub CLI
         if: github.head_ref != 'automation/aggregation-output'
@@ -36,6 +36,38 @@ jobs:
             sudo apt-get install -y gh
           fi
 
+      - name: Determine required checks based on PR file types
+        if: github.head_ref != 'automation/aggregation-output'
+        id: determine-checks
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          # Fetch the list of files changed in this PR
+          PR_FILES=$(gh pr view "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --json files -q '.files[].path')
+          echo "PR files:"
+          printf '%s\n' "$PR_FILES"
+
+          HAS_PYTHON=$(printf '%s\n' "$PR_FILES" | grep -i "submissions/KLayout Python/.*\.py$" || true)
+          HAS_GDS=$(printf '%s\n' "$PR_FILES" | grep -iE "submissions/.*\.(gds|oas)$" || true)
+
+          if [ -n "$HAS_GDS" ]; then
+            echo "PR contains GDS/OAS files — requiring check_files, check-file-case-sensitivity, submission_check, verification"
+            REQUIRED_CHECKS=$'check_files\ncheck-file-case-sensitivity\nsubmission_check\nverification'
+          elif [ -n "$HAS_PYTHON" ]; then
+            echo "PR contains Python files — requiring check-file-case-sensitivity, submission_check, verification"
+            REQUIRED_CHECKS=$'check-file-case-sensitivity\nsubmission_check\nverification'
+          else
+            echo "PR contains no submission files — requiring check-file-case-sensitivity"
+            REQUIRED_CHECKS=$'check-file-case-sensitivity'
+          fi
+
+          echo "Required checks:"
+          printf '%s\n' "$REQUIRED_CHECKS"
+
+          # Write to file so the next step can read it (multiline env var workaround)
+          printf '%s\n' "$REQUIRED_CHECKS" > /tmp/required_checks.txt
+
       - name: Wait for all required checks to finish and succeed
         if: github.head_ref != 'automation/aggregation-output'
         id: wait-checks
@@ -43,14 +75,10 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
-          # Use the actual check names you care about
-          PDF_CHECKS=$'check_files\ncheck-file-case-sensitivity\nsubmission_check\nverification'
-          GDS_CHECKS=$'check_files\ncheck-file-case-sensitivity\nsubmission_check\nverification'
+          REQUIRED_CHECKS=$(cat /tmp/required_checks.txt)
 
-          MAX_RETRIES=10
+          MAX_RETRIES=20
           SLEEP_SECONDS=30
-
-          ALL_REQUIRED=$(printf '%s\n' "$PDF_CHECKS" "$GDS_CHECKS" | sort -u)
 
           for ((i=1;i<=MAX_RETRIES;i++)); do
             echo "Fetching checks for PR #$PR_NUMBER (attempt $i/$MAX_RETRIES)..."
@@ -67,42 +95,29 @@ jobs:
               printf '%s\n' "$CHECKS"
             fi
 
-            PRESENT_CHECKS=""
-            while IFS= read -r req; do
-              [ -z "$req" ] && continue
-              if printf '%s\n' "$CHECKS" | cut -d'|' -f1 | grep -Fxq "$req"; then
-                PRESENT_CHECKS+=$'\n'"$req"
-              fi
-            done <<< "$ALL_REQUIRED"
-
-            PRESENT_CHECKS=$(printf '%s\n' "$PRESENT_CHECKS" | sort -u)
-
-            if [ -z "$PRESENT_CHECKS" ]; then
-              if [ "$i" -eq "$MAX_RETRIES" ]; then
-                echo "No relevant checks present for this PR after $MAX_RETRIES attempts. Failing final verification."
-                exit 1
-              fi
-              echo "No relevant checks present yet. Waiting for other workflows to start... ($i/$MAX_RETRIES)"
-              sleep "$SLEEP_SECONDS"
-              continue
-            fi
-
-            echo "Present required checks on this PR:"
-            printf '%s\n' "$PRESENT_CHECKS"
-
+            # Verify that every required check is present and has succeeded
+            all_present=1
             all_success=1
 
             while IFS= read -r req; do
               [ -z "$req" ] && continue
               echo "Evaluating required check: '$req'"
 
+              # Check if this required check is present at all
+              if ! printf '%s\n' "$CHECKS" | cut -d'|' -f1 | grep -Fxq "$req"; then
+                echo "  -> Not yet present. Waiting..."
+                all_present=0
+                all_success=0
+                continue
+              fi
+
+              # Check its state
               while IFS= read -r check; do
                 [ -z "$check" ] && continue
                 name=${check%%|*}
                 state=${check##*|}
 
-                # Explicitly ignore this job's own check to avoid deadlock
-                if [ "$name" = "$req" ] && [ "$name" != "final-verification" ]; then
+                if [ "$name" = "$req" ]; then
                   state_upper=$(echo "$state" | tr '[:lower:]' '[:upper:]')
                   echo "  -> name=$name state=$state_upper"
 
@@ -117,19 +132,21 @@ jobs:
                   fi
                 fi
               done <<< "$CHECKS"
-            done <<< "$PRESENT_CHECKS"
+            done <<< "$REQUIRED_CHECKS"
 
-            if [ "$all_success" -eq 1 ]; then
-              echo "All present required checks passed."
+            if [ "$all_present" -eq 1 ] && [ "$all_success" -eq 1 ]; then
+              echo "All required checks are present and passed."
               exit 0
             fi
 
-            echo "Waiting for present checks to complete... ($i/$MAX_RETRIES)"
+            if [ "$i" -eq "$MAX_RETRIES" ]; then
+              echo "Timeout waiting for all required checks to complete."
+              exit 1
+            fi
+
+            echo "Waiting for checks to complete... ($i/$MAX_RETRIES)"
             sleep "$SLEEP_SECONDS"
           done
-
-          echo "Timeout waiting for all required checks to complete."
-          exit 1
 
       - name: Success message
         if: success() && github.head_ref != 'automation/aggregation-output'
